@@ -71,7 +71,8 @@ const ExperienceContent: React.FC<ExperienceContentProps> = ({ isVisible }) => {
                         <button
                             key={index}
                             id={`tab-${index}`}
-                            ref={el => tabRefs.current[index] = el}
+                            // FIX: The ref callback function must not return a value. Using a block body for the arrow function fixes this.
+                            ref={el => { tabRefs.current[index] = el; }}
                             role="tab"
                             aria-selected={activeTab === index}
                             aria-controls={`panel-${index}`}
