@@ -7,6 +7,7 @@ interface SplashScreenProps {
 const SplashScreen: React.FC<SplashScreenProps> = ({ isFinishing }) => {
     return (
         <div 
+            aria-hidden="true"
             className={`fixed inset-0 z-[100] flex items-center justify-center bg-background transition-opacity duration-500 ease-in-out ${isFinishing ? 'opacity-0' : 'opacity-100'}`}
         >
             <div className="logo-container">

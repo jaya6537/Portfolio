@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
 import SectionWrapper from './SectionWrapper';
@@ -25,13 +24,15 @@ const AboutContent: React.FC<AboutContentProps> = ({ isVisible }) => {
                     <p>{PERSONAL_INFO.about}</p>
                 </div>
                 <div className={`md:col-span-2 flex items-center justify-center ${getStyleWithDelay('delay-300')}`}>
-                    <div className="w-64 h-64 md:w-80 md:h-80 relative group">
-                        <div className="absolute inset-0 bg-accent rounded-lg transform transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2"></div>
-                        <img 
-                            src={PERSONAL_INFO.profileImage}
-                            alt={PERSONAL_INFO.name} 
-                            className="absolute inset-0 w-full h-full object-cover rounded-lg filter grayscale hover:grayscale-0 transition-all duration-300"
-                        />
+                    <div className="w-64 h-64 md:w-80 md:h-80 relative">
+                        <div className={`absolute inset-0 bg-accent rounded-lg transform transition-transform duration-[2000ms] ease-in-out ${isVisible ? 'translate-x-2 translate-y-2' : 'translate-x-0 translate-y-0'}`}></div>
+                        <div className="absolute inset-0 rounded-lg overflow-hidden">
+                             <img 
+                                src={PERSONAL_INFO.profileImage}
+                                alt={PERSONAL_INFO.name} 
+                                className={`w-full h-full object-cover filter transition-all duration-[2000ms] ease-in-out ${isVisible ? 'grayscale-0' : 'grayscale'}`}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

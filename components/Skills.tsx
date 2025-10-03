@@ -19,18 +19,18 @@ const SkillsContent: React.FC<SkillsContentProps> = ({ isVisible }) => {
                 <span className="flex-grow h-px bg-border-color ml-6"></span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {Object.entries(SKILLS).map(([category, skills], index) => (
+                {Object.entries(SKILLS).map(([category, skills], categoryIndex) => (
                     <div 
                         key={category} 
                         className={`bg-component-background p-6 rounded-lg shadow-lg ${cardBaseStyle} ${isVisible ? cardVisibleStyle : cardHiddenStyle}`}
-                        style={{ transitionDelay: `${100 * (index + 2)}ms` }}
+                        style={{ transitionDelay: `${100 * (categoryIndex + 2)}ms` }}
                     >
                         <h3 className="text-lg font-bold text-accent mb-4">{category}</h3>
-                        <ul className="space-y-2 text-text-secondary">
-                            {skills.map(skill => (
+                        <ul className="space-y-3 text-text-secondary">
+                            {skills.map((skill) => (
                                 <li key={skill.name} className="flex items-center">
-                                    <span className="text-accent mr-2">▹</span>
-                                    {skill.name}
+                                    <span className="text-accent mr-3">▹</span>
+                                    <span>{skill.name}</span>
                                 </li>
                             ))}
                         </ul>

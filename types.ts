@@ -1,4 +1,3 @@
-
 export interface Skill {
   name: string;
 }
@@ -8,6 +7,7 @@ export interface Project {
   description: string;
   technologies: string[];
   link: string;
+  githubLink?: string;
 }
 
 export interface Experience {

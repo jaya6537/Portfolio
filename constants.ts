@@ -46,25 +46,29 @@ export const PROJECTS: Project[] = [
     title: "Jobby App",
     description: "A comprehensive job search solution with features like user authentication, job filtering, and detailed job views.",
     technologies: ["React JS", "JWT", "REST API", "Local Storage", "Routing"],
-    link: "http://djsjobby.ccbp.tech"
+    link: "http://djsjobby.ccbp.tech",
+    githubLink: "https://github.com/jaya6537"
   },
   {
     title: "Nxt Trendz (E-commerce Clone)",
     description: "A cutting-edge e-commerce platform inspired by Amazon and Flipkart, featuring product listings, details, and secure authentication.",
     technologies: ["React JS", "JWT", "REST API", "Routing", "Authentication"],
-    link: "http://jayatrendz.ccbp.tech"
+    link: "http://jayatrendz.ccbp.tech",
+    githubLink: "https://github.com/jaya6537"
   },
   {
     title: "Mining Chatbot",
     description: "An AI/NLP-powered chatbot to answer queries regarding mining industry acts, rules, and circulars, available 24/7.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap", "Python"],
-    link: "https://jayaswaroop-finalui.static.hf.space"
+    link: "https://jayaswaroop-finalui.static.hf.space",
+    githubLink: "https://github.com/jaya6537"
   },
   {
     title: "Interactive Chatbot",
     description: "A user-friendly chatbot providing personalized responses from a predefined set of answers, built with a focus on UI.",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-    link: "http://jayaswaroop.ccbp.tech"
+    link: "http://jayaswaroop.ccbp.tech",
+    githubLink: "https://github.com/jaya6537"
   }
 ];
 

@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 
 const CustomCursor: React.FC = () => {
-    // Only run on devices that support hover (non-touch devices).
+    // Check for hover support and reduced motion preference
+    const isMotionSafe = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
     const supportsHover = typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const shouldRenderCursor = isMotionSafe && supportsHover;
 
     const cursorDotRef = useRef<HTMLDivElement>(null);
     const cursorRingRef = useRef<HTMLDivElement>(null);
@@ -13,7 +15,7 @@ const CustomCursor: React.FC = () => {
     const dotScale = useRef(1);
     
     useEffect(() => {
-        if (!supportsHover) return;
+        if (!shouldRenderCursor) return;
 
         const handleMouseMove = (e: MouseEvent) => {
             mousePos.current = { x: e.clientX, y: e.clientY };
@@ -59,9 +61,9 @@ const CustomCursor: React.FC = () => {
             window.removeEventListener('mousemove', handleMouseMove);
             cancelAnimationFrame(animationFrameId);
         };
-    }, [supportsHover]);
+    }, [shouldRenderCursor]);
 
-    if (!supportsHover) {
+    if (!shouldRenderCursor) {
         return null;
     }
 
@@ -87,10 +89,12 @@ const CustomCursor: React.FC = () => {
             `}</style>
             <div
                 ref={cursorDotRef}
+                aria-hidden="true"
                 className="cursor-dot fixed top-0 left-0 w-2 h-2 bg-accent rounded-full pointer-events-none z-[9999]"
             />
             <div
                 ref={cursorRingRef}
+                aria-hidden="true"
                 className="cursor-ring fixed top-0 left-0 w-10 h-10 border-2 border-accent rounded-full pointer-events-none z-[9999] transition-[width,height,border-width,background-color,opacity] duration-300 ease-in-out"
             />
         </>

@@ -9,15 +9,13 @@ const SectionWrapper = (Component: React.ComponentType<{ isVisible: boolean }>, 
         useEffect(() => {
             const observer = new IntersectionObserver(
                 ([entry]) => {
-                    if (entry.isIntersecting) {
-                        setIsVisible(true);
-                        observer.unobserve(entry.target);
-                    }
+                    // Update visibility state based on whether the section is intersecting with the viewport
+                    setIsVisible(entry.isIntersecting);
                 },
                 {
                     root: null,
                     rootMargin: '0px',
-                    threshold: 0.1
+                    threshold: 0.3
                 }
             );
 
