@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PERSONAL_INFO } from '../constants';
 import SectionWrapper from './SectionWrapper';
 
@@ -7,6 +7,12 @@ interface AboutContentProps {
 }
 
 const AboutContent: React.FC<AboutContentProps> = ({ isVisible }) => {
+    const [imageError, setImageError] = useState(false);
+
+    const handleImageError = () => {
+        setImageError(true);
+    };
+    
     const baseStyle = "transition-all duration-700 ease-in-out";
     const visibleStyle = "opacity-100 translate-y-0";
     const hiddenStyle = "opacity-0 translate-y-5";
@@ -26,12 +32,19 @@ const AboutContent: React.FC<AboutContentProps> = ({ isVisible }) => {
                 <div className={`md:col-span-2 flex items-center justify-center ${getStyleWithDelay('delay-300')}`}>
                     <div className="w-64 h-64 md:w-80 md:h-80 relative">
                         <div className={`absolute inset-0 bg-accent rounded-lg transform transition-transform duration-[2000ms] ease-in-out ${isVisible ? 'translate-x-2 translate-y-2' : 'translate-x-0 translate-y-0'}`}></div>
-                        <div className="absolute inset-0 rounded-lg overflow-hidden">
-                             <img 
-                                src={PERSONAL_INFO.profileImage}
-                                alt={PERSONAL_INFO.name} 
-                                className={`w-full h-full object-cover filter transition-all duration-[2000ms] ease-in-out ${isVisible ? 'grayscale-0' : 'grayscale'}`}
-                            />
+                        <div className="absolute inset-0 rounded-lg overflow-hidden bg-component-background">
+                             { !imageError ? (
+                                <img 
+                                    src={PERSONAL_INFO.profileImage}
+                                    alt={PERSONAL_INFO.name} 
+                                    onError={handleImageError}
+                                    className={`w-full h-full object-cover filter transition-all duration-[2000ms] ease-in-out ${isVisible ? 'grayscale-0' : 'grayscale'}`}
+                                />
+                             ) : (
+                                <div className="w-full h-full flex items-center justify-center">
+                                    <span className="text-5xl font-bold text-accent font-poppins">JD</span>
+                                </div>
+                             )}
                         </div>
                     </div>
                 </div>
