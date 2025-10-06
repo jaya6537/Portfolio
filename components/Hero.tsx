@@ -3,7 +3,7 @@ import { PERSONAL_INFO } from '../constants';
 
 const Hero: React.FC = () => {
     return (
-        <section id="hero" className="min-h-screen flex flex-col justify-center items-start mt-5">
+        <section id="hero" className="min-h-screen flex flex-col justify-center items-start pt-24">
             <p className="text-accent text-lg mb-4 font-mono">Hi, my name is</p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-text-primary font-poppins">
                 {PERSONAL_INFO.name}.
