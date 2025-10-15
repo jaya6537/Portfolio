@@ -8,6 +8,10 @@ export interface Project {
   technologies: string[];
   link: string;
   githubLink?: string;
+  image: string;
+  detailedDescription: string;
+  challenges: string[];
+  solutions: string[];
 }
 
 export interface Experience {

@@ -26,13 +26,8 @@ const Footer: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
-        if (WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') {
-            setToast({
-                message: "Please replace 'YOUR_ACCESS_KEY_HERE' in Footer.tsx to enable email sending.",
-                type: 'error',
-            });
-            return;
-        }
+        // FIX: Removed the check for a placeholder access key. The hardcoded key caused a TypeScript
+        // error because the comparison against 'YOUR_ACCESS_KEY_HERE' would always be false.
 
         setIsSubmitting(true);
         setToast(null);
