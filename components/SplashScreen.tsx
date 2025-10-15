@@ -21,8 +21,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ isFinishing }) => {
         if (playPromise !== undefined) {
             playPromise.catch(error => {
                 // Autoplay was prevented. This is a non-critical enhancement,
-                // so we can fail silently without disrupting the user experience.
-                console.log("Splash screen sound autoplay was prevented by the browser.");
+                // so we fail silently without disrupting the user experience or cluttering the console.
             });
         }
     }, []); // Empty dependency array ensures this runs only once when the component mounts.
