@@ -86,7 +86,7 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
 
                 <div className="overflow-y-auto p-4 sm:p-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div>
+                        <div className="lg:sticky lg:top-0 self-start">
                             <img src={project.image} alt={`${project.title} screenshot`} className="rounded-md w-full object-cover aspect-video mb-4 shadow-md" />
                              <div className="flex items-center space-x-4 mb-4">
                                 <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-accent hover:underline">
@@ -128,6 +128,6 @@ const ProjectModal: React.FC<{ project: Project | null; onClose: () => void }> =
             </div>
         </div>
     );
-}
+};
 
 export default ProjectModal;
