@@ -15,6 +15,8 @@ import MailIcon from './components/icons/MailIcon';
 import SplashScreen from './components/SplashScreen';
 import { useTheme } from './contexts/ThemeContext';
 
+const popSfxBase64 = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAJABkAAoA8AIAAAAAEACABkYXRhAgAAABwAAAAA/v8r/v8e/f8a/v8e/f8l/v80//9B//9f//+J//+z//+z/+KF//92//9e//9T//9L//9F//9A//8+/v82/v8y/v8x/v8y';
+
 const App: React.FC = () => {
     const [isSplashScreenVisible, setIsSplashScreenVisible] = useState(true);
     const [isAnimatingOut, setIsAnimatingOut] = useState(false);
@@ -25,6 +27,28 @@ const App: React.FC = () => {
         root.classList.remove('light', 'dark');
         root.classList.add(theme);
     }, [theme]);
+    
+    // Effect to play a sound on the user's first interaction.
+    useEffect(() => {
+        const audio = new Audio(popSfxBase64);
+        audio.volume = 0.2;
+
+        const playSoundOnFirstInteraction = () => {
+            audio.play().catch(() => {}); // Play and catch any errors silently
+            // Remove listeners so it only plays once
+            document.removeEventListener('click', playSoundOnFirstInteraction);
+            document.removeEventListener('keydown', playSoundOnFirstInteraction);
+        };
+
+        document.addEventListener('click', playSoundOnFirstInteraction);
+        document.addEventListener('keydown', playSoundOnFirstInteraction);
+
+        return () => {
+            document.removeEventListener('click', playSoundOnFirstInteraction);
+            document.removeEventListener('keydown', playSoundOnFirstInteraction);
+        };
+    }, []); // Run only once on initial app load
+
 
     useEffect(() => {
         const fadeOutTimer = setTimeout(() => {
