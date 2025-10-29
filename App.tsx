@@ -81,7 +81,7 @@ const App: React.FC = () => {
         <>
             {isSplashScreenVisible && <SplashScreen isFinishing={isAnimatingOut} />}
             
-            <div className={`bg-background min-h-screen transition-opacity duration-500 ${isSplashScreenVisible ? 'opacity-0' : 'opacity-100'}`}>
+            <div className={`bg-background min-h-screen transition-opacity duration-500 ${isSplashScreenVisible ? 'opacity-0' : 'opacity-100'} overflow-x-hidden`}>
                 <Header />
 
                 {/* Left Fixed Social Bar */}
