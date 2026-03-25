@@ -99,8 +99,11 @@ const App: React.FC = () => {
                 </div>
 
                 {/* Right Fixed Email Bar */}
-                <div className="hidden lg:flex fixed bottom-0 right-12 w-10 flex-col items-center space-y-24 z-10">
-                    <a href={`mailto:${PERSONAL_INFO.email}`} className="writing-mode-vertical-rl text-sm font-mono tracking-widest text-text-tertiary hover:text-accent transition-colors duration-300">
+                <div className="hidden lg:flex fixed bottom-0 right-12 w-10 flex-col items-center z-10">
+                    <a 
+                        href={`mailto:${PERSONAL_INFO.email}`} 
+                        className="writing-mode-vertical-rl text-sm font-mono tracking-widest text-text-tertiary hover:text-accent transition-all duration-300 hover:-translate-y-1 mb-6 p-0"
+                    >
                         {PERSONAL_INFO.email}
                     </a>
                     <div className="h-24 w-px bg-text-tertiary"></div>
@@ -118,12 +121,6 @@ const App: React.FC = () => {
                     </main>
                     <Footer />
                 </div>
-
-                <style>{`
-                    .writing-mode-vertical-rl {
-                        writing-mode: vertical-rl;
-                    }
-                `}</style>
             </div>
         </>
     );
